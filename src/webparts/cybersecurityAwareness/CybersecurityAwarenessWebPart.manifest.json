@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "a1ae704c-e183-4e7c-9b53-af6cba669d20",
+  "alias": "CybersecurityAwarenessWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "supportsFullBleed": true,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [
+    {
+      "groupId": "cf066440-0614-43d6-98ae-0b31cf14c7c3",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Cybersecurity Awareness Month 2026"
+      },
+      "description": {
+        "default": "Cybersecurity Awareness Month 2026 site experience"
+      },
+      "officeFabricIconFontName": "Shield",
+      "properties": {}
+    }
+  ]
+}

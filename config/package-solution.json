@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "cybersecurity-awareness-client-side-solution",
+    "id": "c3f83815-f32b-4139-bd32-a71755d61398",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/cybersecurity-awareness-spfx.sppkg"
+  }
+}

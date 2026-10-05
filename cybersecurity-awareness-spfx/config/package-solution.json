@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Cybersecurity Awareness Client Side Solution",
+    "id": "5deed2fe-0102-4398-ad8b-6216874e9068",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": false,
+    "isDomainIsolated": false,
+    "features": [
+      {
+        "title": "Cybersecurity Awareness Feature",
+        "description": "Adds the Cybersecurity Awareness React web part.",
+        "id": "e5a9f46e-54ed-4ea6-b303-8828ca1e89cd",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml",
+            "ClientSideInstance.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/cybersecurity-awareness.sppkg"
+  }
+}

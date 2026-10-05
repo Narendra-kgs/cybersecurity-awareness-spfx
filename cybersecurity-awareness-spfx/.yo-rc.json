@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.21.1",
+    "libraryName": "cybersecurity-awareness-spfx",
+    "libraryId": "5deed2fe-0102-4398-ad8b-6216874e9068",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "cybersecurity-awareness-spfx",
+    "componentType": "webpart"
+  }
+}

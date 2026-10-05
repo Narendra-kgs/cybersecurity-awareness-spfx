@@ -1,0 +1,80 @@
+.webPartRoot {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Hide site title */
+:global(a[data-navigationcomponent="SiteHeader"]) {
+  display: none !important;
+}
+
+/* Hide site header */
+:global([data-automationid="SiteHeader"]),
+:global([data-automation-id="SiteHeader"]) {
+  display: none !important;
+}
+
+/* Remove the header container space */
+:global([role="region"][aria-label*="Site Header"]) {
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Hide command bar */
+:global(.ms-CommandBar),
+:global(div[role="menubar"]) {
+  display: none !important;
+}
+
+/* Remove SharePoint canvas spacing */
+:global(.CanvasSection),
+:global(.CanvasZone),
+:global(.ControlZone) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove first section spacing */
+:global([data-automation-id="CanvasSection"]) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+:global(section.mainContent) {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+:global(.mainContent) {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+:global([data-automation-id="CanvasControl"]) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+/* Hide command bar completely */
+:global(#spCommandBar) {
+  display: none !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Hide wrapper */
+:global(.commandBarWrapper) {
+  display: none !important;
+  min-height: 0 !important;
+  height: 0 !important;
+}
+
+/* Hide command bar region */
+:global([aria-label="Command bar"]) {
+  display: none !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}

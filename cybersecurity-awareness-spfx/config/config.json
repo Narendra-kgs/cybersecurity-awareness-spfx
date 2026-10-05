@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "cybersecurity-awareness-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cybersecurityAwareness/CybersecurityAwarenessWebPart.js",
+          "manifest": "./src/webparts/cybersecurityAwareness/CybersecurityAwarenessWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CybersecurityAwarenessWebPartStrings": "lib/webparts/cybersecurityAwareness/loc/{locale}.js"
+  }
+}
