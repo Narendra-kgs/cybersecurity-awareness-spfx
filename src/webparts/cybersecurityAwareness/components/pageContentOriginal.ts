@@ -127,6 +127,7 @@ section.block{padding-block:48px}
     background:var(--section-bg);
   }
   .week-section .sec-head h2{color:var(--section-heading)}
+  .week-section .sec-head p{font-size:18px}
   .week-section .card{background:var(--section-card)}
 
   .defend-section{
@@ -137,6 +138,7 @@ section.block{padding-block:48px}
   .defend-section .sec-head h2{color:var(--section-heading)}
 .defend-section .sec-head p{
 color:#ffffff !important;
+font-size:18px !important;
 
 }
 .defend-section .sec-head{
@@ -157,6 +159,7 @@ color:#ffffff !important;
     max-width:1200px !important;
     width:100% !important;
     line-height:1.6;
+    font-size:18px !important;
   }
   .protect-section{
     --section-bg:var(--band);
@@ -164,10 +167,11 @@ color:#ffffff !important;
     --section-card:var(--card);
     background:var(--section-bg);
   }
-  .protect-section .card{background:var(--section-card)}
-  .protect-section #protect-title{
+.protect-section .card{background:var(--section-card)}
+.protect-section #protect-title{
     color:white !important;
 }
+.protect-section p{font-size:18px}
   .stories-section{
     --section-bg:lightgrey;
     --section-heading:var(--heading);
@@ -216,7 +220,7 @@ color:#ffffff !important;
 .glance-section .rail li.tbc .node{border-style:dashed;border-color:var(--slate);color:var(--slate)}
 .glance-section .rail .date{display:block;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .glance-section .rail .what{display:block;font-weight:700;margin-block:2px}
-.glance-section .rail .sub{display:block;font-size:.88rem;color:var(--muted)}
+.glance-section .rail .sub{display:block;font-size:14px;color:var(--muted);font-weight:700}
 
 /* This week */
 .week-section .week-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start}
@@ -245,24 +249,139 @@ details.flags[open] summary{border-block-end:1px solid var(--line)}
 .week-section details.flags ol li{margin-block-end:6px}
 .week-section details.flags p{padding:0 14px 12px;margin:0;font-size:.92rem}
 .fine{font-size:.82rem;color:var(--muted)}
+/* Theme Grid */
+.themes-section .themes{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:18px;
+}
 
-/* Themes */
-.themes-section .themes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;}
-.themes-section .theme{display:flex;flex-direction:column;padding:0;overflow:hidden}
-.themes-section .theme .top{padding:16px 18px 12px;border-block-start:5px solid var(--kgs-blue)}
-.themes-section .theme.now .top{border-block-start-color:var(--kgs-red)}
-.themes-section .theme .meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-block-end:10px;flex-wrap:wrap}
-.themes-section .theme .wk{font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.themes-section .theme h3{color:var(--heading);font-size:1.12rem;margin-block-end:4px}
-.themes-section .theme .tag{font-style:italic;color:var(--muted);margin:0}
-.themes-section .theme dl{margin:0;padding:4px 18px 0;flex:1}
-.themes-section .theme dt{font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--kgs-blue);margin-block-start:12px}
-.themes-section .theme dd{margin:2px 0 0;font-size:.92rem}
-.themes-section .theme dd.act{font-weight:700}
-.themes-section .theme .pp{padding:14px 18px 18px}
-.themes-section .chips{display:flex;flex-wrap:wrap;gap:6px;margin-block-start:6px}
-.themes-section .chips span{background:var(--slot-bg);border-radius:5px;padding:3px 8px;font-size:.78rem;color:var(--slot-ink);font-weight:700}
+/* Card */
+.themes-section .theme{
+    display:grid;
+    grid-template-rows:
+        150px   /* Header area */
+        auto    /* At Work label */
+        130px   /* At Work content */
+        auto    /* At Home label */
+        80px   /* At Home content */
+        auto    /* Do This label */
+        1fr;    /* Do This content */
 
+    background:#fff;
+    border-radius:8px;
+    overflow:hidden;
+    height:100%;
+}
+
+/* Card Header */
+.themes-section .theme .top{
+    padding:16px 18px 12px;
+    border-top:5px solid var(--kgs-blue);
+}
+
+.themes-section .theme.now .top{
+    border-top-color:var(--kgs-red);
+}
+
+/* Week Row */
+.themes-section .theme .meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+    margin-bottom:12px;
+    flex-wrap:wrap;
+}
+
+.themes-section .theme .wk{
+    font-size:.74rem;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+}
+
+/* Theme Title */
+.themes-section .theme h3{
+    color:var(--heading);
+    font-size:1.12rem;
+    line-height:1.2;
+    margin:0 0 10px;
+}
+
+/* Theme Subtitle */
+.themes-section .theme .tag{
+    margin:0;
+    font-style:italic;
+    color:var(--muted);
+    line-height:1.45;
+}
+
+/* Content Area */
+.themes-section .theme dl{
+    display:contents;
+}
+
+/* Section Headers */
+.themes-section .theme dt{
+    padding:0 18px;
+    margin:12px 0 4px;
+
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:.1em;
+    color:var(--kgs-blue);
+}
+
+/* Section Content */
+.themes-section .theme dd{
+    margin:0;
+    padding:0 18px;
+
+    font-size:.92rem;
+    line-height:1.5;
+}
+
+/* Do This */
+.themes-section .theme dd.act{
+    font-weight:700;
+}
+
+/* Chips */
+.themes-section .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:6px;
+}
+
+.themes-section .chips span{
+    background:var(--slot-bg);
+    border-radius:5px;
+    padding:3px 8px;
+    font-size:.78rem;
+    color:var(--slot-ink);
+    font-weight:700;
+}
+
+/* Tablet */
+@media (max-width:1100px){
+    .themes-section .themes{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width:700px){
+    .themes-section .themes{
+        grid-template-columns:1fr;
+    }
+
+    .themes-section .theme{
+        grid-template-rows:auto;
+    }
+}
 /* Protect */
 .protect-section .protect{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
 .protect-section .tipcard{padding:0;overflow:hidden}
@@ -656,7 +775,7 @@ export const pageMarkup: string = `
 <section aria-labelledby="week-title" class="block alt week-section" id="week">
 <div class="wrap">
 <div class="sec-head">
-<div class="kicker">This week · Oct 8–14</div>
+<div class="kicker">This week · Oct 8</div>
 <h2 id="week-title">Phishing Everywhere</h2>
 <p>Phishing isn’t just email anymore. Lures now arrive by text, QR code and phone, including callers who pretend to be the IT help desk. Here’s what they look like and what to do.</p>
 </div>
@@ -674,9 +793,9 @@ class="video-thumb" />
 </a>
 </div>
 <div class="also">
-<div class="slot"> <span class="slot-label">Proofpoint</span><a href="https://kgssolutions.sharepoint.com/:b:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/Files/Combined_Phishing_Quishing_11x17_Tip_Sheet.pdf?d=w4c9be981feae4ee08e0b921359b0bdce&csf=1&web=1&e=c94xGf"><b>Tip Sheet</b></a>One-page PDF for this theme</div>
-<div class="slot"><span class="slot-label">Proofpoint</span><a href="https://kgssolutions.sharepoint.com/:b:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/BackendImageFiles/KGS_Branded_Phishing_Poster_White_Header_Logo_Fixed.pdf?d=wf9db46ab5ad346548dd0414ede9e3dc2&csf=1&web=1&e=fHveGs"><b>Poster</b></a>For offices and plant screens</div>
-<div class="slot"><span class="slot-label">KGS Connect</span><a href="https://kgssolutions.sharepoint.com/:b:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/BackendImageFiles/March%202026%20QR.pdf?d=wb19467c324e8444b80270f2bc5e77d8e&csf=1&web=1&e=2edFcw"><b>Article</b></a>The March QR-code attack, explained</div>
+<div class="slot"> <span class="slot-label">Proofpoint</span><a href="https://kgssolutions.sharepoint.com/:b:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/Files/KGS%20Tip%20Sheet%20Phishing%20Quishing.pdf?d=w219ccb9c8aa546f4af6434321257fa7f&csf=1&web=1&e=KxGHcF"><b>Tip Sheet</b></a>One-page PDF for this theme</div>
+<div class="slot"><span class="slot-label">Proofpoint</span><a href="https://kgssolutions.sharepoint.com/:b:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/Files/KGS_Branded_Phishing_Poster_White_Header_Logo_Fixed.pdf?d=wff1891be0b394af0af095c5b8b806d4b&csf=1&web=1&e=UyuLi2"><b>Poster</b></a>For offices and plant screens</div>
+<div class="slot"><span class="slot-label"></span><a href="https://kiddecorporate.us.newsweaver.com/1ns94dph45/fc3335zads0?lang=en"><b>Employee News</b></a>The March QR-code attack, explained</div>
 </div>
 <div class="doit"><b>Action:</b> report anything suspicious to <a href="mailto:security@kgsolutions.com">security@kgsolutions.com</a>, even if you already clicked.</div>
 </div>
@@ -706,7 +825,8 @@ class="video-thumb" />
 <li>It asks you to sign in from a code in an email, a common way to steal passwords.</li>
 <li>It’s generic and unexpected, with no named person to contact.</li>
 </ol>
-<p><b>What to do:</b> don’t scan it. Report it to security@kgsolutions.com.</p>
+<p><b>What to do:</b> don’t scan it. Report it to 
+<a class="report" href="mailto:security@kgsolutions.com?subject=Suspicious%20message%20report">security@kgsolutions.com</a>.</p>
 </details>
 <p class="fine" style="margin-block-start:12px">A new example every Thursday.</p>
 </div>
@@ -716,16 +836,16 @@ class="video-thumb" />
 <section aria-labelledby="defend-title" class="block band defend-section" id="defend">
 <div class="wrap">
 <div class="sec-head">
-<div class="kicker">KGS</div>
+<!-- <div class="kicker">KGS</div> -->
 <h2 id="defend-title">Your Cybersecurity Team, by the Numbers</h2>
 <p>Attackers try to get into KGS every day. From January through June 2026, here’s how the team found weak spots, blocked attacks, spotted threats, shut down incidents and kept KGS ready to recover.</p>
 </div>
 <div class="stats">
-<div class="stat"><span class="fn">Identify</span><span class="num">77</span><span class="what">security assesments completed</span><span class="more">with no critical issues found in independent testing</span></div>
+<div class="stat"><span class="fn">Identify</span><span class="num">77</span><span class="what">security assessments completed</span><span class="more">with no critical issues found in independent testing</span></div>
 <div class="stat"><span class="fn">Protect</span><span class="num">15.2M</span><span class="what">malicious emails and network attacks blocked</span><span class="more">Plus 4.5 million network attacks stopped before they reached us</span></div>
-<div class="stat"><span class="fn">Detect</span><span class="num">7.4B</span><span class="what">events ingested</span><span class="more">to support threat detection,investigation, & response</span></div>
+<div class="stat"><span class="fn">Detect</span><span class="num">7.4B</span><span class="what">events ingested</span><span class="more">to support threat detection, investigation, & response</span></div>
 <div class="stat"><span class="fn">Respond</span><span class="num">1,286</span><span class="what">security cases resolved</span><span class="more"></span></div>
-<div class="stat"><span class="fn">Recover</span><span class="num">570</span><span class="what">servers backed up</span><span class="more">with a successful rescovery test of core systems</span></div>
+<div class="stat"><span class="fn">Recover</span><span class="num">570</span><span class="what">servers backed up</span><span class="more">with a successful recovery test of core systems</span></div>
 </div>
 <!--<div class="pair">
 <article class="win" id="qr-response">
@@ -763,7 +883,7 @@ class="video-thumb" />
 <dl>
 <dt>At Work</dt><dd>QR-code lures, fake “IT help desk” calls, and messages from trusted senders whose accounts were hacked</dd>
 <dt>At Home</dt><dd>Toll, parcel and bank texts (smishing)</dd>
-<dt>Do this</dt><dd class="act">Report it to security@kgsolutions.com, even if you already clicked.</dd>
+<dt>Do This</dt><dd class="act">Report it to security@kgsolutions.com, even if you already clicked.</dd>
 </dl>
 <!-- <div class="pp"><span class="slot-label">CONTENT</span>
 <div class="chips"><span>Video</span><span>Poster</span><span>Tip Sheet</span><span>Interactive</span></div>
@@ -778,7 +898,7 @@ class="video-thumb" />
 <dl>
 <dt>At Work</dt><dd>WhatsApp or text messages from a “leader” about a confidential deal or a payment</dd>
 <dt>At Home</dt><dd>“Family emergency” calls that use cloned voices</dd>
-<dt>Do this</dt><dd class="act">Verify on a known number, never the one in the message.</dd>
+<dt>Do This</dt><dd class="act">Verify on a known number, never the one in the message.</dd>
 </dl>
 <!-- <div class="pp"><span class="slot-label">COMING SOON</span>
 <div class="chips"><span>Video</span><span>Poster</span><span>Tip Sheet</span><span>Interactive</span></div>
@@ -793,7 +913,7 @@ class="video-thumb" />
 <dl>
 <dt>At Work</dt><dd>Fake “customer” orders for rush pickup, “new” bank details, look-alike web addresses and fake carriers</dd>
 <dt>At Home</dt><dd>Fake invoices and missed-delivery texts</dd>
-<dt>Do this</dt><dd class="act">Confirm unusual orders, pickups and bank changes by calling a contact you already know.</dd>
+<dt>Do This</dt><dd class="act">Confirm unusual orders, pickups and bank changes by calling a contact you already know.</dd>
 </dl>
 <!-- <div class="pp"><span class="slot-label">COMING SOON</span>
 <div class="chips"><span>Video</span><span>Poster</span><span>Tip Sheet</span><span>Interactive</span></div>
@@ -808,7 +928,7 @@ class="video-thumb" />
 <dl>
 <dt>At Work</dt><dd>AI-written lures, deepfake calls and unapproved AI tools</dd>
 <dt>At Home</dt><dd>Voice clones and deepfake investment ads</dd>
-<dt>Do this</dt><dd class="act">Use approved AI tools only, and restart when updates prompt.</dd>
+<dt>Do This</dt><dd class="act">Use approved AI tools only, and restart when updates prompt.</dd>
 </dl>
 <!-- <div class="pp"><span class="slot-label">COMING SOON</span>
 <div class="chips"><span>Video</span><span>Poster</span><span>Tip Sheet</span><span>Interactive</span></div>
