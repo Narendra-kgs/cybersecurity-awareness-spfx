@@ -119,7 +119,27 @@ section.block{padding-block:48px}
     background:var(--section-bg);
   }
   .glance-section .sec-head h2{color:var(--section-heading)}
+.week-btn{
+    border:2px solid var(--kgs-blue);
+    cursor:pointer;
+}
+.week2-image{
+    width:50%;
+    max-width:240px;
+}
+.week-nav-item.disabled .node{
+    opacity:.4;
+    cursor:not-allowed;
+    pointer-events:none;
+}
 
+#week1{
+    display:none;
+}
+
+#week2{
+    display:block;
+}
   .week-section{
     --section-bg:var(--surface);
     --section-heading:var(--heading);
@@ -127,7 +147,19 @@ section.block{padding-block:48px}
     background:var(--section-bg);
   }
   .week-section .sec-head h2{color:var(--section-heading)}
-  .week-section .sec-head p{font-size:18px}
+.week-section .sec-head{
+    max-inline-size:none !important;
+    max-width:100% !important;
+    width:100% !important;
+}
+
+.week-section .sec-head p{
+    max-width:1200px !important;
+    width:100% !important;
+    font-size:18px;
+    line-height:1.6;
+}
+
   .week-section .card{background:var(--section-card)}
 
   .defend-section{
@@ -165,13 +197,14 @@ font-size:18px !important;
     --section-bg:var(--band);
     --section-heading:var(--heading);
     --section-card:var(--card);
-    background:var(--section-bg);
+    background:#dadada;
   }
 .protect-section .card{background:var(--section-card)}
 .protect-section #protect-title{
-    color:white !important;
+    color:black !important;
 }
-.protect-section p{font-size:18px}
+
+.protect-section p{font-size:18px;color:black}
   .stories-section{
     --section-bg:lightgrey;
     --section-heading:var(--heading);
@@ -215,7 +248,35 @@ font-size:18px !important;
 .glance-section .rail{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative}
 .glance-section .rail::before{content:"";position:absolute;inset-inline:10% 10%;inset-block-start:21px;block-size:3px;background:var(--line)}
 .glance-section .rail li{position:relative;text-align:center;padding-inline:8px}
-.glance-section .rail .node{position:relative;z-index:1;inline-size:44px;block-size:44px;border-radius:50%;margin-inline:auto;margin-block-end:10px;display:grid;place-items:center;background:var(--card);color:var(--kgs-blue);font-weight:800;font-size:.95rem}
+.glance-section .rail .node{
+  position:relative;
+  z-index:1;
+  inline-size:44px;
+  block-size:44px;
+  border-radius:50%;
+  margin-inline:auto;
+  margin-block-end:10px;
+  display:grid;
+  place-items:center;
+  background:var(--card);
+  color:var(--kgs-blue);
+  font-weight:800;
+  font-size:.95rem;
+  border:2px solid var(--kgs-blue);
+  cursor:pointer;
+}
+
+.glance-section .rail li.disabled .node{
+    cursor:not-allowed;
+    opacity:.45;
+    pointer-events:none;
+}
+
+.glance-section .rail li.now .node{
+    background:var(--kgs-red);
+    border-color:var(--kgs-red);
+    color:#fff;
+}
 .glance-section .rail li.now .node{background:var(--kgs-red);border-color:var(--kgs-red);color:#FFFFFF}
 .glance-section .rail li.tbc .node{border-style:dashed;border-color:var(--slate);color:var(--slate)}
 .glance-section .rail .date{display:block;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -291,7 +352,7 @@ details.flags[open] summary{border-block-end:1px solid var(--line)}
     align-items:center;
     gap:8px;
     margin-bottom:12px;
-    flex-wrap:wrap;
+    width:100%;
 }
 
 .themes-section .theme .wk{
@@ -502,7 +563,7 @@ details.flags[open] summary{border-block-end:1px solid var(--line)}
     border-top:4px solid #E53935 !important;
     border-radius:8px;
     padding:22px;
-    min-height:360px;
+    min-height:250px;
     overflow:hidden;
 }
 
@@ -764,25 +825,51 @@ export const pageMarkup: string = `
 <p>Each theme stays open all month, so you can catch up any time.</p>
 </div>
 <ol class="rail">
-<li class="now"><span aria-hidden="true" class="node">1</span><span class="date">Thu Oct 8</span><span class="what">Kickoff and Week 1</span><span class="sub">Phishing Everywhere</span></li>
-<li class=""><span aria-hidden="true" class="node">2</span><span class="date">Thu Oct 15</span><span class="what">Week 2</span><span class="sub">Leader Impersonation</span></li>
-<li class=""><span aria-hidden="true" class="node">3</span><span class="date">Thu Oct 22</span><span class="what">Week 3</span><span class="sub">Payment and Logistics Fraud</span></li>
-<li class=""><span aria-hidden="true" class="node">4</span><span class="date">Thu Oct 29</span><span class="what">Week 4 and Wrap-Up</span><span class="sub">AI-powered Scams and Threats</span></li>
-<!-- <li class=""><span aria-hidden="true" class="node">✓</span><span class="date">Thu Oct 29</span><span class="what">Wrap-up</span><span class="sub">Recap and Spot the Scam Answers</span></li> -->
+
+<li class="week-nav-item">
+<button class="node week-btn" data-week="1">1</button>
+<span class="date">Thu Oct 8</span>
+<span class="what">Kickoff and Week 1</span>
+<span class="sub">Phishing Everywhere</span>
+</li>
+
+<li class="week-nav-item now">
+<button class="node week-btn" data-week="2">2</button>
+<span class="date">Thu Oct 15</span>
+<span class="what">Week 2</span>
+<span class="sub">Leader Impersonation</span>
+</li>
+
+<li class="week-nav-item disabled">
+<button class="node" disabled>3</button>
+<span class="date">Thu Oct 22</span>
+<span class="what">Week 3</span>
+<span class="sub">Payment and Logistics Fraud</span>
+</li>
+
+<li class="week-nav-item disabled">
+<button class="node" disabled>4</button>
+<span class="date">Thu Oct 29</span>
+<span class="what">Week 4 and Wrap-Up</span>
+<span class="sub">AI-powered Scams and Threats</span>
+</li>
+
 </ol>
 </div>
 </section>
-<section aria-labelledby="week-title" class="block alt week-section" id="week">
+
+
+<section aria-labelledby="week1-title" class="block alt week-section" id="week1" style="display:none;">
 <div class="wrap">
 <div class="sec-head">
 <div class="kicker">This week · Oct 8</div>
-<h2 id="week-title">Phishing Everywhere</h2>
+<h2 id="week1-title">Phishing Everywhere</h2>
 <p>Phishing isn’t just email anymore. Lures now arrive by text, QR code and phone, including callers who pretend to be the IT help desk. Here’s what they look like and what to do.</p>
 </div>
 <div class="week-grid">
 <div>
 <div aria-label="Placeholder for this week's Proofpoint video" class="slot video" role="img">
-<a href="https://kgssolutions.sharepoint.com/:v:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/Files/pfpt_sat_CyberGuysPhishingEmailsRealLife_Video_uk.mp4?d=w0dfbd250f6c64eea8714672b3a3621bf&csf=1&web=1&e=uVzt9Z"
+<a href="https://kgssolutions.sharepoint.com/:v:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/Files/pfpt_sat_CyberGuysPhishingEmailsRealLife_Video_uk.mp4?d=w0dfbd250f6c64eea8714672b3a3621bf&csf=1&web=1&e=uVzt9Z#t=30"
 target="_blank"
 rel="noopener noreferrer"
 class="video-link">
@@ -799,7 +886,7 @@ class="video-thumb" />
 </div>
 <div class="doit"><b>Action:</b> report anything suspicious to <a href="mailto:security@kgsolutions.com">security@kgsolutions.com</a>, even if you already clicked.</div>
 </div>
-<div class="card scam" id="spot">
+<div class="card scam" id="spot1">
 <h3>Spot the Scam <span class="pill live">Week 1</span></h3>
 <p class="fine">Example modeled on real lures. Names and details are invented.</p>
 <div aria-label="Example phishing email" class="mail">
@@ -826,6 +913,72 @@ class="video-thumb" />
 <li>It’s generic and unexpected, with no named person to contact.</li>
 </ol>
 <p><b>What to do:</b> don’t scan it. Report it to 
+<a class="report" href="mailto:security@kgsolutions.com?subject=Suspicious%20message%20report">security@kgsolutions.com</a>.</p>
+</details>
+<p class="fine" style="margin-block-start:12px">A new example every Thursday.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="week2-title" class="block alt week-section" id="week2">
+<div class="wrap">
+<div class="sec-head">
+<div class="kicker">This week · Oct 15</div>
+<h2 id="week2-title">Leader Impersonation</h2>
+<p>Attackers often pose as executives, managers, or other trusted leaders to create urgency and pressure employees into taking action. Leadership impersonation attacks use emails, texts, phone calls, collaboration tools, and even AI-generated content to mimic executives, managers, or other trusted leaders in an attempt to steal information, gain access, or persuade employees to transfer funds or bypass normal processes - even on personal devices. This week, learn how to recognize leadership impersonation attempts, verify unexpected requests, and pause before acting. A quick verification can stop a costly security incident before it starts.</p>
+</div>
+<div class="week-grid">
+<div>
+<div aria-label="Placeholder for this week's Proofpoint video" class="slot video" role="img">
+<a href="https://kgssolutions.sharepoint.com/:v:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/Files/pfpt_zg_DS_SophisPhishAttacks_Video_en-us.mp4?d=w36aef1c3e0794ccc96fb9c4f59e2cb36&csf=1&web=1&e=bJhGiA"
+target="_blank"
+rel="noopener noreferrer"
+class="video-link">
+<img src="https://kgssolutions.sharepoint.com/:i:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/BackendImageFiles/image%20(1).png?d=wa16bd3aa1a55461683bd4273cfc9ce92&csf=1&web=1&e=FzQeEp"
+alt="Proofpoint Video Week 2"
+class="video-thumb" />
+<span class="play-overlay"></span>
+</a>
+</div>
+<div class="also">
+<div class="slot"> <span class="slot-label">Proofpoint</span><a href="https://kgssolutions.sharepoint.com/:b:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/Files/KGS_Leadership_Impersonation_Tip_Sheet_Final.pdf?d=w28b75143905e41ca80ecf8fc0b7bdd2b&csf=1&web=1&e=MfH0Ni"><b>Tip Sheet</b></a>One-page PDF for this theme</div>
+<div class="slot"><span class="slot-label">Proofpoint</span><a href="https://kgssolutions.sharepoint.com/:b:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/Files/KGS_Social_Media_and_Smishing_Security_Poster.pdf?d=w88d8162a6a3e46f387769a387778f167&csf=1&web=1&e=hTfYmO"><b>Poster</b></a>For offices and plant screens</div>
+<div class="slot"><span class="slot-label">KGS Connect</span><a href="https://kidde-residentialfire.us.newsweaver.com/4a8e58mi4v/1tumobk8okb?lang=en"><b>Employee News</b></a>Attackers Are Impersonating Senior Leaders and Affiliated Companies.</div>
+</div>
+<div class="doit"><b>Action:</b> report anything suspicious to <a href="mailto:security@kgsolutions.com">security@kgsolutions.com</a>, even if you already clicked.</div>
+</div>
+<div class="card scam" id="spot2">
+<h3>Spot the Scam <span class="pill live">Week 2</span></h3>
+<p class="fine">This is a real example based on a recent attack. Names and details have been adjusted.</p>
+<!--<div aria-label="Example phishing email" class="mail">
+<div class="hdr">
+<div><span>From:</span> KGS Internal Communications &lt;updates@kgs-intranet-news.com&gt;</div>
+<div><span>Subject:</span> <b>Action required: re-verify your account by 5:00 PM today</b></div>
+</div>
+<div class="msg">
+<div>
+<p>Hello,</p>
+<p>As part of our annual security review, all employees must re-verify their accounts today. Scan the QR code with your phone and sign in with your KGS username and password.</p>
+<p>Accounts not verified by 5:00 PM will be locked.</p>
+</div>
+<svg aria-label="Example QR code (decorative, not scannable)" class="qr" role="img" shape-rendering="crispEdges" viewbox="0 0 21 21"><rect fill="#1A1A1A" height="7" width="7" x="0" y="0"></rect><rect fill="#FFFFFF" height="5" width="5" x="1" y="1"></rect><rect fill="#1A1A1A" height="3" width="3" x="2" y="2"></rect><rect fill="#1A1A1A" height="7" width="7" x="14" y="0"></rect><rect fill="#FFFFFF" height="5" width="5" x="15" y="1"></rect><rect fill="#1A1A1A" height="3" width="3" x="16" y="2"></rect><rect fill="#1A1A1A" height="7" width="7" x="0" y="14"></rect><rect fill="#FFFFFF" height="5" width="5" x="1" y="15"></rect><rect fill="#1A1A1A" height="3" width="3" x="2" y="16"></rect><rect fill="#1A1A1A" height="1" width="1" x="8" y="0"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="0"></rect><rect fill="#1A1A1A" height="1" width="1" x="11" y="0"></rect><rect fill="#1A1A1A" height="1" width="1" x="8" y="1"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="1"></rect><rect fill="#1A1A1A" height="1" width="1" x="11" y="1"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="1"></rect><rect fill="#1A1A1A" height="1" width="1" x="8" y="2"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="2"></rect><rect fill="#1A1A1A" height="1" width="1" x="10" y="2"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="2"></rect><rect fill="#1A1A1A" height="1" width="1" x="8" y="3"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="3"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="4"></rect><rect fill="#1A1A1A" height="1" width="1" x="11" y="4"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="4"></rect><rect fill="#1A1A1A" height="1" width="1" x="8" y="5"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="5"></rect><rect fill="#1A1A1A" height="1" width="1" x="11" y="5"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="6"></rect><rect fill="#1A1A1A" height="1" width="1" x="11" y="6"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="6"></rect><rect fill="#1A1A1A" height="1" width="1" x="8" y="7"></rect><rect fill="#1A1A1A" height="1" width="1" x="10" y="7"></rect><rect fill="#1A1A1A" height="1" width="1" x="11" y="7"></rect><rect fill="#1A1A1A" height="1" width="1" x="1" y="8"></rect><rect fill="#1A1A1A" height="1" width="1" x="4" y="8"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="8"></rect><rect fill="#1A1A1A" height="1" width="1" x="11" y="8"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="8"></rect><rect fill="#1A1A1A" height="1" width="1" x="14" y="8"></rect><rect fill="#1A1A1A" height="1" width="1" x="16" y="8"></rect><rect fill="#1A1A1A" height="1" width="1" x="0" y="9"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="9"></rect><rect fill="#1A1A1A" height="1" width="1" x="14" y="9"></rect><rect fill="#1A1A1A" height="1" width="1" x="15" y="9"></rect><rect fill="#1A1A1A" height="1" width="1" x="17" y="9"></rect><rect fill="#1A1A1A" height="1" width="1" x="19" y="9"></rect><rect fill="#1A1A1A" height="1" width="1" x="20" y="9"></rect><rect fill="#1A1A1A" height="1" width="1" x="0" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="2" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="3" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="4" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="6" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="7" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="13" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="14" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="17" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="18" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="19" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="20" y="10"></rect><rect fill="#1A1A1A" height="1" width="1" x="2" y="11"></rect><rect fill="#1A1A1A" height="1" width="1" x="3" y="11"></rect><rect fill="#1A1A1A" height="1" width="1" x="4" y="11"></rect><rect fill="#1A1A1A" height="1" width="1" x="5" y="11"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="11"></rect><rect fill="#1A1A1A" height="1" width="1" x="17" y="11"></rect><rect fill="#1A1A1A" height="1" width="1" x="18" y="11"></rect><rect fill="#1A1A1A" height="1" width="1" x="19" y="11"></rect><rect fill="#1A1A1A" height="1" width="1" x="0" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="1" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="2" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="3" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="4" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="5" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="6" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="7" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="8" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="10" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="13" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="14" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="15" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="16" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="17" y="12"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="13"></rect><rect fill="#1A1A1A" height="1" width="1" x="10" y="13"></rect><rect fill="#1A1A1A" height="1" width="1" x="11" y="13"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="13"></rect><rect fill="#1A1A1A" height="1" width="1" x="14" y="13"></rect><rect fill="#1A1A1A" height="1" width="1" x="15" y="13"></rect><rect fill="#1A1A1A" height="1" width="1" x="18" y="13"></rect><rect fill="#1A1A1A" height="1" width="1" x="20" y="13"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="14"></rect><rect fill="#1A1A1A" height="1" width="1" x="13" y="14"></rect><rect fill="#1A1A1A" height="1" width="1" x="14" y="14"></rect><rect fill="#1A1A1A" height="1" width="1" x="18" y="14"></rect><rect fill="#1A1A1A" height="1" width="1" x="19" y="14"></rect><rect fill="#1A1A1A" height="1" width="1" x="13" y="15"></rect><rect fill="#1A1A1A" height="1" width="1" x="15" y="15"></rect><rect fill="#1A1A1A" height="1" width="1" x="16" y="15"></rect><rect fill="#1A1A1A" height="1" width="1" x="17" y="15"></rect><rect fill="#1A1A1A" height="1" width="1" x="18" y="15"></rect><rect fill="#1A1A1A" height="1" width="1" x="19" y="15"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="16"></rect><rect fill="#1A1A1A" height="1" width="1" x="13" y="16"></rect><rect fill="#1A1A1A" height="1" width="1" x="14" y="16"></rect><rect fill="#1A1A1A" height="1" width="1" x="15" y="16"></rect><rect fill="#1A1A1A" height="1" width="1" x="16" y="16"></rect><rect fill="#1A1A1A" height="1" width="1" x="17" y="16"></rect><rect fill="#1A1A1A" height="1" width="1" x="11" y="17"></rect><rect fill="#1A1A1A" height="1" width="1" x="17" y="17"></rect><rect fill="#1A1A1A" height="1" width="1" x="19" y="17"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="18"></rect><rect fill="#1A1A1A" height="1" width="1" x="10" y="18"></rect><rect fill="#1A1A1A" height="1" width="1" x="13" y="18"></rect><rect fill="#1A1A1A" height="1" width="1" x="14" y="18"></rect><rect fill="#1A1A1A" height="1" width="1" x="15" y="18"></rect><rect fill="#1A1A1A" height="1" width="1" x="18" y="18"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="19"></rect><rect fill="#1A1A1A" height="1" width="1" x="11" y="19"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="19"></rect><rect fill="#1A1A1A" height="1" width="1" x="17" y="19"></rect><rect fill="#1A1A1A" height="1" width="1" x="20" y="19"></rect><rect fill="#1A1A1A" height="1" width="1" x="8" y="20"></rect><rect fill="#1A1A1A" height="1" width="1" x="9" y="20"></rect><rect fill="#1A1A1A" height="1" width="1" x="10" y="20"></rect><rect fill="#1A1A1A" height="1" width="1" x="12" y="20"></rect><rect fill="#1A1A1A" height="1" width="1" x="13" y="20"></rect><rect fill="#1A1A1A" height="1" width="1" x="14" y="20"></rect><rect fill="#1A1A1A" height="1" width="1" x="16" y="20"></rect><rect fill="#1A1A1A" height="1" width="1" x="20" y="20"></rect></svg>
+</div>
+</div>-->
+<div class=""week2-image"">
+  <img src="https://kgssolutions.sharepoint.com/:i:/r/sites/DT/CybersecurityAwareness/Shared%20Documents/BackendImageFiles/Week2_New.png?d=w093f58244c0b44129d72beb04dea3b31&csf=1&web=1&e=UwdcY1">
+</div>
+<details class="flags">
+<summary>Reveal the red flags</summary>
+<ol>
+<li>Comes from an unlisted or unknown personal phone number.</li>
+<li>Uses a familiar executive name (Dan Thompson) that could be impersonated.</li>
+<li>Creates a sense of urgency and asks for a quick response.</li>
+<li>Sent to a personal iPhone that is not used for company business.</li>
+<li>No context about the request or why they are reaching out.</li>
+<li>Asks you to reply directly instead of using a known, trusted channel (e.g., Teams, company email, or a verified phone number).</li>
+</ol>
+<p><b>What to do:</b> Do not respond. Report it to 
 <a class="report" href="mailto:security@kgsolutions.com?subject=Suspicious%20message%20report">security@kgsolutions.com</a>.</p>
 </details>
 <p class="fine" style="margin-block-start:12px">A new example every Thursday.</p>
@@ -874,24 +1027,27 @@ class="video-thumb" />
 <p>Each theme is based on attacks aimed at KGS, our partners and our industry. Every week covers what to watch for At Work and At Home, plus one simple action.</p>
 </div>
 <div class="themes">
-<article class="card theme now">
+<article class="card theme week-theme" data-theme-week="1">
 <div class="top">
-<div class="meta"><span class="wk">Week 1 · Oct 8</span><span class="pill live">Live now</span></div>
+<div class="meta"><span class="wk">Week 1 · Oct 8</span></div>
 <h3>Phishing Everywhere</h3>
 <p class="tag">Think before you click, scan or tap</p>
 </div>
 <dl>
 <dt>At Work</dt><dd>QR-code lures, fake “IT help desk” calls, and messages from trusted senders whose accounts were hacked</dd>
 <dt>At Home</dt><dd>Toll, parcel and bank texts (smishing)</dd>
-<dt>Do This</dt><dd class="act">Report it to security@kgsolutions.com, even if you already clicked.</dd>
+<dt>Do This</dt><dd class="act">Report it to <a class="report" href="mailto:security@kgsolutions.com?subject=Suspicious%20message%20report">security@kgsolutions.com</a>, even if you already clicked.</dd>
 </dl>
 <!-- <div class="pp"><span class="slot-label">CONTENT</span>
 <div class="chips"><span>Video</span><span>Poster</span><span>Tip Sheet</span><span>Interactive</span></div>
 </div> -->
 </article>
-<article class="card theme">
+<article class="card theme week-theme" data-theme-week="2">
 <div class="top">
-<div class="meta"><span class="wk">Week 2 · Opens Oct 15</span><!-- <span class="pill next">Opens Oct 15</span> --></div>
+<div class="meta">
+<span class="wk">Week 2</span>
+<span class="pill live">Live now</span>
+</div>
 <h3>Leader Impersonation</h3>
 <p class="tag">Urgent + confidential = verify first</p>
 </div>
@@ -904,7 +1060,7 @@ class="video-thumb" />
 <div class="chips"><span>Video</span><span>Poster</span><span>Tip Sheet</span><span>Interactive</span></div>
 </div> -->
 </article>
-<article class="card theme">
+<article class="card theme week-theme" data-theme-week="3">
 <div class="top">
 <div class="meta"><span class="wk">Week 3 · Opens Oct 22</span><!-- <span class="pill next">Opens Oct 22</span> --></div>
 <h3>Payment and Logistics Fraud</h3>
@@ -919,7 +1075,7 @@ class="video-thumb" />
 <div class="chips"><span>Video</span><span>Poster</span><span>Tip Sheet</span><span>Interactive</span></div>
 </div> -->
 </article>
-<article class="card theme">
+<article class="card theme week-theme" data-theme-week="4">
 <div class="top">
 <div class="meta"><span class="wk">Week 4 · Opens Oct 29</span><!-- <span class="pill next">Opens Oct 29</span> --></div>
 <h3>AI-powered Scams and Threats</h3>
@@ -1072,5 +1228,4 @@ class="video-thumb" />
 <div class="wrap foot">
 <span>KGS Cybersecurity · Digital Technology · Questions? <a href="mailto:security@kgsolutions.com">security@kgsolutions.com</a></span>
 </div>
-</footer>
-`;
+</footer>`;
